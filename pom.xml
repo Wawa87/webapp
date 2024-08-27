@@ -35,6 +35,7 @@
               <addClasspath>true</addClasspath>
             </manifest>
           </archive>
+<!--          Change the webappDirectory below to fit your environment or remove it-->
           <webappDirectory>C:/apache-tomcat-10.1.28/webapps/webapp</webappDirectory>
         </configuration>
       </plugin>
