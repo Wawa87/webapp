@@ -26,7 +26,6 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <version>2.3.232</version>
-      <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
     <dependency>
@@ -46,6 +45,20 @@
     <finalName>webapp</finalName>
     <plugins>
       <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\webapp</directory>
+              <includes>
+                <include>**</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.4.0</version>
@@ -56,7 +69,7 @@
             </manifest>
           </archive>
 <!--          Change the webappDirectory below to fit your environment or remove it-->
-          <webappDirectory>C:/apache-tomcat-10.1.28/webapps/webapp</webappDirectory>
+          <webappDirectory>C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\webapp</webappDirectory>
         </configuration>
       </plugin>
     </plugins>

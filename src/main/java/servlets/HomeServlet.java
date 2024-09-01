@@ -11,6 +11,6 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("HomeServlet");
-        resp.getWriter().write("HomeServlet");
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

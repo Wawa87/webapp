@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2>Hello Universe!</h2>
+<h1>Hello Universe!</h1>
 <p>Web application starter...</p>
 </body>
 </html>
