@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.awg.www</groupId>
   <artifactId>webapp</artifactId>
@@ -32,13 +32,12 @@
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
       <version>6.1.0</version>
-      <scope>provided</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-jdk14 -->
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.23.1</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>2.0.16</version>
     </dependency>
   </dependencies>
   <build>
@@ -49,7 +48,8 @@
         <configuration>
           <filesets>
             <fileset>
-              <directory>C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\webapp</directory>
+              <!--          Change the webappDirectory below to fit your environment or remove it-->
+              <directory>C:\apache-tomcat-10.1.28\webapps\webapp</directory>
               <includes>
                 <include>**</include>
               </includes>
@@ -68,8 +68,8 @@
               <addClasspath>true</addClasspath>
             </manifest>
           </archive>
-<!--          Change the webappDirectory below to fit your environment or remove it-->
-          <webappDirectory>C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\webapp</webappDirectory>
+          <!--          Change the webappDirectory below to fit your environment or remove it-->
+          <webappDirectory>C:\apache-tomcat-10.1.28\webapps\webapp</webappDirectory>
         </configuration>
       </plugin>
     </plugins>
