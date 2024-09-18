@@ -9,9 +9,14 @@
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
 
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/errors/404error.jsp</location>
+  </error-page>
+
   <context-param>
     <param-name>db.url</param-name>
-    <param-value>jdbc:h2:../webapps/webapp/WEB-INF/test_db</param-value>
+    <param-value>jdbc:h2:../webapps/webapp/WEB-INF/dev_db</param-value>
   </context-param>
   <context-param>
     <param-name>db.user</param-name>
@@ -26,14 +31,14 @@
     <param-value>-tcpAllowOthers</param-value>
   </context-param>
 
-<!--  <filter>-->
-<!--    <filter-name>LoggingFilter</filter-name>-->
-<!--    <filter-class>filters.LoggingFilter</filter-class>-->
-<!--  </filter>-->
-<!--  <filter-mapping>-->
-<!--    <filter-name>LoggingFilter</filter-name>-->
-<!--    <url-pattern>/*</url-pattern>-->
-<!--  </filter-mapping>-->
+  <filter>
+    <filter-name>LoggingFilter</filter-name>
+    <filter-class>filters.LoggingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoggingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <listener>
     <listener-class>org.h2.server.web.JakartaDbStarter</listener-class>
@@ -54,11 +59,46 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>home</servlet-name>
-    <servlet-class>servlets.HomeServlet</servlet-class>
+    <servlet-name>welcome</servlet-name>
+    <servlet-class>servlets.WelcomeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>home</servlet-name>
+    <servlet-name>welcome</servlet-name>
     <url-pattern></url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>dashboard</servlet-name>
+    <servlet-class>servlets.DashboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dashboard</servlet-name>
+    <url-pattern>/dashboard</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>60</session-timeout>
+  </session-config>
+
+  <security-role>
+    <description>All Authenticated Users</description>
+    <role-name>SIMPLEUSER</role-name>
+  </security-role>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>userpages</web-resource-name>
+      <url-pattern>/dashboard</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>SIMPLEUSER</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>BASIC</auth-method>
+<!--    <form-login-config>-->
+<!--      <form-login-page>/WEB-INF/login.jsp</form-login-page>-->
+<!--      <form-error-page>/WEB-INF/error.jsp</form-error-page>-->
+<!--    </form-login-config>-->
+  </login-config>
 </web-app>

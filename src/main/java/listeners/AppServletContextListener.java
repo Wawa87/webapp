@@ -23,7 +23,7 @@ public class AppServletContextListener implements ServletContextListener {
         sce.getServletContext().setAttribute("logger", this.logger);
 
         try {
-            this.connectionPool = JdbcConnectionPool.create("jdbc:h2:../webapps/webapp/WEB-INF/test_db", "sa", "sa");
+            this.connectionPool = JdbcConnectionPool.create("jdbc:h2:../webapps/webapp/WEB-INF/dev_db", "sa", "sa");
             this.connection = this.connectionPool.getConnection();
             sce.getServletContext().setAttribute("dbConnection", this.connection);
 

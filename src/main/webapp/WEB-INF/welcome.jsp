@@ -1,11 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" info="Homepage" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" info="Welcome" %>
 <%@ taglib prefix = "c" uri="jakarta.tags.core" %>
 <html>
+<head>
+<title><c:out value="${pageTitle}"/></title>
+</head>
 <body>
-<h1>Hello Universe!</h1>
-<h2>JSP Welcome Page</h2>
+<h1><c:out value="${pageTitle}"/></h1>
 <p>Web application starter...</p>
-<p><c:out value="${pageTitle}"/></p>
 <img src="static/img/sample.jpg" alt="sample image" width="300px"/>
 </body>
 </html>
