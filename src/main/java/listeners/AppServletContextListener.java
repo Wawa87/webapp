@@ -1,12 +1,18 @@
 package listeners;
 
 import helpers.AppFileReader;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import org.h2.jdbcx.JdbcConnectionPool;
+import org.h2.jdbcx.JdbcDataSource;
+import org.h2.jdbcx.JdbcDataSourceFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,16 +26,19 @@ public class AppServletContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         this.initializeLogger();
         this.logger.info("Servlet Context Initialized...");
-        sce.getServletContext().setAttribute("logger", this.logger);
+        ServletContext servletContext = sce.getServletContext();
+        servletContext.setAttribute("logger", this.logger);
 
         try {
-            this.connectionPool = JdbcConnectionPool.create("jdbc:h2:../webapps/webapp/WEB-INF/dev_db", "sa", "sa");
-            this.connection = this.connectionPool.getConnection();
-            sce.getServletContext().setAttribute("dbConnection", this.connection);
+            InitialContext initialContext = new InitialContext();
+            Context context = (Context) initialContext.lookup("java:comp/env");
+            DataSource jdbcDataSource = (DataSource) context.lookup("jdbc/appDb");
+            this.connection = jdbcDataSource.getConnection();
 
             URL resource = sce.getServletContext().getResource("/WEB-INF/classes/dbSchema/schema.sql");
             String sqlSchema = AppFileReader.readFromInputStream(resource.openStream());
             this.connection.prepareCall(sqlSchema).execute();
+            this.connection.close();
         } catch (Exception e) {
             logger.error(e.toString());
             throw new RuntimeException(e);

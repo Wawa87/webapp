@@ -14,23 +14,6 @@
     <location>/WEB-INF/errors/404error.jsp</location>
   </error-page>
 
-  <context-param>
-    <param-name>db.url</param-name>
-    <param-value>jdbc:h2:../webapps/webapp/WEB-INF/dev_db</param-value>
-  </context-param>
-  <context-param>
-    <param-name>db.user</param-name>
-    <param-value>sa</param-value>
-  </context-param>
-  <context-param>
-    <param-name>db.password</param-name>
-    <param-value>sa</param-value>
-  </context-param>
-  <context-param>
-    <param-name>db.tcpServer</param-name>
-    <param-value>-tcpAllowOthers</param-value>
-  </context-param>
-
   <filter>
     <filter-name>LoggingFilter</filter-name>
     <filter-class>filters.LoggingFilter</filter-class>
@@ -39,10 +22,6 @@
     <filter-name>LoggingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
-  <listener>
-    <listener-class>org.h2.server.web.JakartaDbStarter</listener-class>
-  </listener>
 
   <listener>
     <listener-class>listeners.AppServletContextListener</listener-class>
@@ -80,10 +59,6 @@
     <session-timeout>60</session-timeout>
   </session-config>
 
-  <security-role>
-    <description>All Authenticated Users</description>
-    <role-name>SIMPLEUSER</role-name>
-  </security-role>
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>userpages</web-resource-name>
@@ -96,9 +71,16 @@
 
   <login-config>
     <auth-method>BASIC</auth-method>
-<!--    <form-login-config>-->
-<!--      <form-login-page>/WEB-INF/login.jsp</form-login-page>-->
-<!--      <form-error-page>/WEB-INF/error.jsp</form-error-page>-->
-<!--    </form-login-config>-->
   </login-config>
+  <security-role>
+    <description>All Authenticated Users</description>
+    <role-name>SIMPLEUSER</role-name>
+  </security-role>
+
+  <resource-ref>
+    <description>Application database</description>
+    <res-ref-name>jdbc/appDb</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>
