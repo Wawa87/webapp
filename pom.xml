@@ -62,11 +62,18 @@
           <filesets>
             <fileset>
               <!--          Change the webappDirectory below to fit your environment or remove it-->
-              <directory>C:\apache-tomcat-10.1.28\webapps\webapp</directory>
+              <directory>C:/apache-tomcat-10.1.28/webapps/</directory>
               <includes>
-                <include>**</include>
+                <include>webapp.war</include>
               </includes>
               <followSymlinks>false</followSymlinks>
+            </fileset>
+            <fileset>
+              <directory>${user.home}/webapp/</directory>
+              <includes>
+                <include>**</include>
+                <followSymlinks>false</followSymlinks>
+              </includes>
             </fileset>
           </filesets>
         </configuration>
@@ -81,8 +88,9 @@
               <addClasspath>true</addClasspath>
             </manifest>
           </archive>
+          <outputDirectory>C:\apache-tomcat-10.1.28\webapps\</outputDirectory>
           <!--          Change the webappDirectory below to fit your environment or remove it-->
-          <webappDirectory>C:\apache-tomcat-10.1.28\webapps\webapp</webappDirectory>
+<!--          <webappDirectory>C:\apache-tomcat-10.1.28\webapps\webapp</webappDirectory>-->
         </configuration>
       </plugin>
     </plugins>

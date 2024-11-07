@@ -14,6 +14,6 @@
             username="sa"
             password="sa"
             driverClassName="org.h2.Driver"
-            url="jdbc:h2:../webapps/webapp/WEB-INF/dev_db"
+            url="jdbc:h2:~/webapp/dev_db"
     />
 </Context>
