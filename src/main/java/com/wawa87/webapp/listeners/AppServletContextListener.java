@@ -1,12 +1,10 @@
-package listeners;
+package com.wawa87.webapp.listeners;
 
-import helpers.AppFileReader;
+import com.wawa87.webapp.helpers.AppFileReader;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import org.h2.jdbcx.JdbcConnectionPool;
-import org.h2.jdbcx.JdbcDataSource;
-import org.h2.jdbcx.JdbcDataSourceFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

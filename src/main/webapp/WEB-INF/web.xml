@@ -16,7 +16,7 @@
 
   <filter>
     <filter-name>LoggingFilter</filter-name>
-    <filter-class>filters.LoggingFilter</filter-class>
+    <filter-class>com.wawa87.webapp.filters.LoggingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>LoggingFilter</filter-name>
@@ -24,7 +24,7 @@
   </filter-mapping>
 
   <listener>
-    <listener-class>listeners.AppServletContextListener</listener-class>
+    <listener-class>com.wawa87.webapp.listeners.AppServletContextListener</listener-class>
   </listener>
 
   <servlet>
@@ -39,7 +39,7 @@
 
   <servlet>
     <servlet-name>welcome</servlet-name>
-    <servlet-class>servlets.WelcomeServlet</servlet-class>
+    <servlet-class>com.wawa87.webapp.servlets.WelcomeServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>welcome</servlet-name>
@@ -48,7 +48,7 @@
 
   <servlet>
     <servlet-name>dashboard</servlet-name>
-    <servlet-class>servlets.DashboardServlet</servlet-class>
+    <servlet-class>com.wawa87.webapp.servlets.DashboardServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>dashboard</servlet-name>

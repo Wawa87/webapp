@@ -1,4 +1,4 @@
-package filters;
+package com.wawa87.webapp.filters;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

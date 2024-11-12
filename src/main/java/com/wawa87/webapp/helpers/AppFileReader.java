@@ -1,4 +1,4 @@
-package helpers;
+package com.wawa87.webapp.helpers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
