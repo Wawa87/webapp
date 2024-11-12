@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
     <Realm
-            className="org.apache.catalina.realm.DataSourceRealm"
-            dataSourceName="jdbc/appDb"
-            localDataSource="true"
-            userTable="users" userNameCol="username" userCredCol="password"
-            userRoleTable="user_roles" roleNameCol="role_name"
-    />
+        className="org.apache.catalina.realm.DataSourceRealm"
+        dataSourceName="jdbc/appDb"
+        localDataSource="true"
+        userTable="users" userNameCol="username" userCredCol="password"
+        userRoleTable="user_roles" roleNameCol="role_name">
+        <CredentialHandler
+                className="org.apache.catalina.realm.MessageDigestCredentialHandler"
+                algorithm="md5"
+        />
+    </Realm>
     <Resource
             name="jdbc/appDb" auth="Container"
             type="javax.sql.DataSource"
